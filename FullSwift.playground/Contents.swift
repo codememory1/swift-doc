@@ -1161,3 +1161,42 @@ struct StructWithGenericSubscribeProtocol2<T> where T: Equatable {
     }
 }
 (StructWithGenericSubscribeProtocol1()).eq(a: 10, b: 8)
+
+
+
+/**__=-=-=-=-=-=-=-=-=-=-ASSOCIATED TYPE-=-=-=-=-=-=-=-=-=-=__**/
+
+protocol AssociatedTypeProtocol {
+    associatedtype MyType
+    
+    var name: MyType { get set }
+}
+
+struct AssociatedTypeStruct: AssociatedTypeProtocol {
+    typealias MyType = String
+    
+    var name: String
+}
+
+struct AssociatedTypeStruct2: AssociatedTypeProtocol {
+    typealias MyType = String
+    
+    var name: MyType
+}
+
+struct AssociatedTypeStruct3<T>: AssociatedTypeProtocol {
+    typealias MyType = T
+    
+    var name: T
+}
+
+struct AssociatedTypeStruct4<T>: AssociatedTypeProtocol {
+    typealias MyType = T
+    
+    var name: MyType
+}
+
+(AssociatedTypeStruct(name: "Danil1")).name
+(AssociatedTypeStruct2(name: "Danil2")).name
+(AssociatedTypeStruct3(name: "Danil3")).name
+(AssociatedTypeStruct4(name: "Danil4")).name
